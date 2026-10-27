@@ -2818,17 +2818,52 @@ select.form-input option {
 }
 
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 50px 0 70px;
+  }
+
   .hero-title {
-    font-size: 2.15rem;
+    font-size: clamp(1.85rem, 6.5vw, 2.4rem);
+    line-height: 1.18;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 36px;
+    gap: 12px;
+  }
+
+  .hero-cta-group .btn-primary-glow,
+  .hero-cta-group .btn-secondary-glass {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-social-proof {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
   }
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 
   .stat-box:nth-child(2) {
     border-right: none;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 5.5vw, 2.2rem);
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 0.98rem;
   }
 
   .features-columns {
@@ -2837,6 +2872,7 @@ select.form-input option {
 
   .course-details-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .form-row-2 {
@@ -2844,21 +2880,94 @@ select.form-input option {
   }
 
   .personal-care-text {
-    padding: 28px;
+    padding: 28px 20px;
   }
 
   .care-title {
+    font-size: 1.55rem;
+  }
+
+  .showroom-box {
+    padding: 30px 20px;
+  }
+
+  .showroom-title {
+    font-size: 1.5rem;
+  }
+
+  .simulator-card {
+    padding: 30px 20px;
+  }
+
+  .simulator-title {
     font-size: 1.6rem;
+  }
+
+  .prof-card {
+    overflow: hidden;
+  }
+
+  .prof-img-wrap {
+    height: 280px;
+  }
+
+  .prof-info {
+    padding: 28px 20px;
+  }
+
+  .structure-content {
+    padding: 30px 20px;
+  }
+
+  .structure-title {
+    font-size: 1.55rem;
+  }
+
+  .structure-cta {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn-location, .btn-visit {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .enroll-card {
+    padding: 32px 20px;
+  }
+
+  .enroll-title {
+    font-size: 1.7rem;
+  }
+
+  .lead-form {
+    padding: 24px 18px;
+  }
+
+  .btn-submit-form {
+    font-size: 0.92rem;
+    padding: 14px 18px;
+    width: 100%;
   }
 
   .insta-community-banner {
     flex-direction: column;
     text-align: center;
-    padding: 30px;
+    padding: 30px 20px;
   }
 
   .footer-content {
     grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom-flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
   }
 
   .floating-badge {
@@ -2888,8 +2997,146 @@ select.form-input option {
     font-size: 0.72rem;
   }
 
+  .nav-container {
+    padding: 0 16px;
+    height: 68px;
+  }
+
+  .logo-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-name {
+    font-size: 1.3rem;
+  }
+
+  .brand-sub {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+  }
+
   .btn-cta-nav {
     padding: 8px 14px;
     font-size: 0.78rem;
+  }
+
+  .nav-menu {
+    top: 68px;
+    height: calc(100vh - 68px);
+    padding: 28px 20px;
+  }
+
+  /* Smooth scrollable course tabs on mobile */
+  .courses-tabs-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 4px 16px 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -16px 28px;
+  }
+
+  .courses-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .course-tab-btn {
+    flex-shrink: 0;
+    padding: 9px 16px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .course-main-info {
+    padding: 24px 16px;
+  }
+
+  .course-headline {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  .course-details-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .detail-item strong {
+    font-size: 0.85rem;
+  }
+
+  .course-side-action {
+    padding: 24px 16px;
+  }
+
+  .price-highlight {
+    font-size: 1.45rem;
+  }
+
+  .simulator-card {
+    padding: 24px 16px;
+  }
+
+  .range-markers {
+    font-size: 0.68rem;
+  }
+
+  .result-glass-box {
+    padding: 20px 14px;
+  }
+
+  .score-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .score-number {
+    font-size: 2.2rem;
+  }
+
+  .whatsapp-bubble-popup {
+    max-width: calc(100vw - 32px);
+    width: 290px;
+    right: 0;
+    bottom: 70px;
+  }
+
+  .whatsapp-trigger-btn {
+    width: 52px;
+    height: 52px;
+    bottom: 18px;
+    right: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .btn-cta-nav {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .course-details-grid {
+    grid-template-columns: 1fr;
   }
 }
