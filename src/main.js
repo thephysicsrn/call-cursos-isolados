@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
       simStatusCard.style.background = 'rgba(0, 200, 83, 0.12)';
       simStatusCard.style.borderColor = 'rgba(0, 200, 83, 0.35)';
       simStatusIcon.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-      simStatusTitle.textContent = 'DENTRO DAS VAGAS!';
+      simStatusTitle.textContent = 'Dentro das vagas!';
       simStatusTitle.style.color = '#00E676';
       simStatusDesc.textContent = `Com a sua redação CaLL de ${redacaoScore} pontos, sua média estimada (${roundedScore}) supera a nota de corte histórica de ${cutoffScore} pontos para ${selectedOption.text}!`;
     } else {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
       simStatusCard.style.background = 'rgba(255, 171, 0, 0.12)';
       simStatusCard.style.borderColor = 'rgba(255, 171, 0, 0.35)';
       simStatusIcon.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFAB00" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
-      simStatusTitle.textContent = 'FALTAM POUCOS PONTOS!';
+      simStatusTitle.textContent = 'Faltam poucos pontos!';
       simStatusTitle.style.color = '#FFAB00';
       simStatusDesc.textContent = `Você está a apenas ${diff} pontos da nota de corte (${cutoffScore} pts). Elevar sua redação para 960+ no CaLL é o caminho mais rápido para garantir a vaga!`;
     }

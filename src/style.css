@@ -308,7 +308,6 @@ button, input, select, textarea {
   font-size: 0.68rem;
   font-weight: 800;
   color: var(--call-yellow);
-  text-transform: uppercase;
   letter-spacing: 1.6px;
   white-space: nowrap;
   margin-top: 2px;
@@ -476,7 +475,6 @@ button, input, select, textarea {
   letter-spacing: -1.5px;
   margin-bottom: 24px;
   color: var(--call-white);
-  text-transform: uppercase;
 }
 
 .highlight-yellow {
@@ -856,7 +854,6 @@ button, input, select, textarea {
   color: var(--call-white);
   max-width: 880px;
   margin: 0 auto 18px;
-  text-transform: uppercase;
 }
 
 .section-subtitle {
@@ -1018,7 +1015,6 @@ button, input, select, textarea {
   color: var(--call-white);
   line-height: 1.15;
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 
 .care-p {
@@ -1081,7 +1077,6 @@ button, input, select, textarea {
   line-height: 1.2;
   color: var(--call-white);
   margin-bottom: 18px;
-  text-transform: uppercase;
 }
 
 .showroom-desc {
@@ -1323,7 +1318,6 @@ button, input, select, textarea {
 .detail-label {
   font-size: 0.75rem;
   color: var(--call-text-muted);
-  text-transform: uppercase;
   margin-bottom: 4px;
   font-weight: 700;
 }
@@ -1404,7 +1398,6 @@ button, input, select, textarea {
   font-size: 0.8rem;
   font-weight: 900;
   color: var(--call-yellow);
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 8px;
 }
@@ -1493,7 +1486,6 @@ button, input, select, textarea {
   color: var(--call-white);
   margin-bottom: 14px;
   line-height: 1.15;
-  text-transform: uppercase;
 }
 
 .simulator-desc {
@@ -1769,7 +1761,6 @@ button, input, select, textarea {
   font-size: 0.8rem;
   font-weight: 800;
   color: var(--call-yellow);
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
 }
@@ -1848,7 +1839,6 @@ button, input, select, textarea {
   color: var(--call-white);
   line-height: 1.15;
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 
 .structure-p {
@@ -2251,7 +2241,6 @@ button, input, select, textarea {
   color: var(--call-white);
   line-height: 1.15;
   margin-bottom: 16px;
-  text-transform: uppercase;
 }
 
 .enroll-description {
