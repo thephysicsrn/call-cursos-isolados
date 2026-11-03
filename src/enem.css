@@ -163,12 +163,12 @@ input, textarea {
   font-family: var(--font-heading);
   font-size: clamp(1.6rem, 4.8vw, 2.7rem);
   font-weight: 900;
-  color: #FF2B96;
+  color: var(--call-pink-light);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transform: rotate(-2.8deg);
   text-shadow: 
-    3px 3px 0px #060D2E,
+    3px 3px 0px var(--call-navy-deep),
     4px 4px 0px #000000,
     0 0 30px rgba(255, 0, 127, 0.6);
   margin-left: 14px;
@@ -198,9 +198,9 @@ input, textarea {
 /* Individual Interactive Bouncing Letters */
 .enem-letter {
   display: inline-block;
-  color: #FF007F;
+  color: var(--call-pink);
   text-shadow: 
-    4px 4px 0px #060D2E,
+    4px 4px 0px var(--call-navy-deep),
     8px 8px 0px #000000,
     13px 13px 0px rgba(82, 39, 234, 0.95),
     17px 17px 0px rgba(7, 26, 140, 0.75);
@@ -210,9 +210,9 @@ input, textarea {
 
 .enem-letter:hover {
   transform: translateY(-16px) scale(1.12) rotate(4deg);
-  color: #FF2B96;
+  color: var(--call-pink-light);
   text-shadow: 
-    4px 8px 0px #060D2E,
+    4px 8px 0px var(--call-navy-deep),
     10px 14px 0px #000000,
     18px 22px 0px rgba(82, 39, 234, 1),
     22px 26px 0px rgba(7, 26, 140, 0.8);
@@ -522,7 +522,7 @@ input, textarea {
 .enem-hero-badge-live .live-dot {
   width: 6px;
   height: 6px;
-  background: #FFF;
+  background: var(--call-white);
   border-radius: 50%;
   animation: pulse-dot 1.2s infinite;
 }
@@ -560,7 +560,7 @@ input, textarea {
 .video-section {
   padding: 100px 0;
   position: relative;
-  background: linear-gradient(180deg, var(--call-navy-deep) 0%, #08103A 50%, var(--call-navy-deep) 100%);
+  background: linear-gradient(180deg, var(--call-navy-deep) 0%, var(--call-navy-surface) 50%, var(--call-navy-deep) 100%);
 }
 
 .video-filter-tabs {
@@ -624,7 +624,7 @@ input, textarea {
 .video-thumbnail-wrap {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: #02071F;
+  background: var(--call-navy-deep);
   overflow: hidden;
   cursor: pointer;
 }
@@ -805,7 +805,7 @@ input, textarea {
 }
 
 .ebook-cover-wrap {
-  background: linear-gradient(135deg, #1A2870 0%, #0B1440 100%);
+  background: linear-gradient(135deg, var(--call-cobalt) 0%, var(--call-navy-surface) 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   padding: 22px;
@@ -944,7 +944,7 @@ input, textarea {
 .enem-methods-section {
   padding: 100px 0;
   position: relative;
-  background: linear-gradient(180deg, #08103A 0%, var(--call-navy-deep) 100%);
+  background: linear-gradient(180deg, var(--call-navy-surface) 0%, var(--call-navy-deep) 100%);
 }
 
 .enem-methods-grid {
@@ -983,7 +983,7 @@ input, textarea {
 .enem-method-card:nth-child(2) .method-icon-wrap {
   background: rgba(255, 0, 127, 0.18);
   border-color: rgba(255, 0, 127, 0.35);
-  color: #FF77BC;
+  color: var(--call-pink-light);
 }
 
 .enem-method-card:nth-child(3) .method-icon-wrap {
@@ -1275,8 +1275,8 @@ input, textarea {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: #25D366;
-  color: #060D2E;
+  background: var(--color-whatsapp);
+  color: var(--call-navy-deep);
   font-weight: 800;
   font-size: 0.95rem;
   padding: 13px 20px;
@@ -1317,8 +1317,8 @@ input, textarea {
   height: 60px;
   border-radius: 50%;
   background: rgba(0, 230, 118, 0.18);
-  border: 2px solid #00E676;
-  color: #00E676;
+  border: 2px solid var(--call-success);
+  color: var(--call-success);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1494,7 +1494,7 @@ input, textarea {
   background: rgba(18, 25, 51, 0.75);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1514,7 +1514,7 @@ input, textarea {
   width: 100%;
   height: 310px;
   overflow: hidden;
-  background: #080D1D;
+  background: var(--call-navy-deep);
 }
 
 .aprovado-img-wrap img {
@@ -1573,7 +1573,7 @@ input, textarea {
 
 .aprovado-school::before {
   content: '✓';
-  color: #00E676;
+  color: var(--call-success);
   font-weight: 800;
 }
 
@@ -1597,7 +1597,7 @@ input, textarea {
 .bento-social-section {
   position: relative;
   padding: 90px 0 100px;
-  background: #0B0718;
+  background: var(--call-navy-deep);
   border-top: 1px solid rgba(138, 43, 226, 0.25);
   border-bottom: 1px solid rgba(138, 43, 226, 0.25);
   overflow: hidden;
@@ -1635,7 +1635,7 @@ input, textarea {
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4.2vw, 3.4rem);
   font-weight: 900;
-  color: #FFFFFF;
+  color: var(--call-white);
   letter-spacing: -0.03em;
   margin-bottom: 12px;
   line-height: 1.12;
@@ -1664,7 +1664,7 @@ input, textarea {
 /* Card base */
 .bento-card {
   position: relative;
-  border-radius: 18px;
+  border-radius: 16px;
   background: var(--call-navy-surface);
   border: 1px solid rgba(82, 39, 234, 0.35);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
@@ -1863,6 +1863,15 @@ input, textarea {
   background: var(--call-purple);
   box-shadow: 0 6px 20px var(--call-purple-glow);
   transform: translateY(-2px);
+}
+
+.bento-expand-btn:active {
+  transform: translateY(0);
+}
+
+.bento-expand-btn:focus-visible {
+  outline: 2px solid var(--call-yellow);
+  outline-offset: 3px;
 }
 
 /* Responsive */
