@@ -113,19 +113,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lastActiveElement = null;
 
-  const watchButtons = document.querySelectorAll('.btn-watch-video, .video-thumbnail-wrap');
+  const watchButtons = document.querySelectorAll('.btn-watch-video, .video-thumbnail-wrap, .bento-card-video');
 
   watchButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const card = btn.closest('.video-card');
+      const card = btn.closest('.video-card, .bento-card-video');
       if (!card) return;
 
       lastActiveElement = document.activeElement;
 
-      const videoId = card.getAttribute('data-video-id') || 'dQw4w9WgXcQ';
-      const title = card.querySelector('.video-card-title')?.textContent || 'Aulão Estratégico ENEM';
-      const speaker = card.querySelector('.video-instructor-line')?.textContent || 'CaLL Cursos Isolados';
+      const videoId = card.getAttribute('data-video-id') || 'L_LUpnjgPso';
+      const title = card.querySelector('.video-card-title, .bento-card-headline')?.textContent?.replace(/\s+/g, ' ') || 'História de Aprovação CaLL';
+      const speaker = card.querySelector('.video-instructor-line, .bento-card-tag-pill')?.textContent || 'CaLL Cursos Isolados';
 
       if (modalVideoTitle) modalVideoTitle.textContent = title;
       if (modalVideoSpeaker) modalVideoSpeaker.textContent = speaker;
