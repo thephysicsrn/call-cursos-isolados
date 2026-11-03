@@ -441,5 +441,105 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // 9. Approved Students Transition & Interactive Carousel
+  const aprovadosWrap = document.getElementById('aprovados-carousel-wrap');
+  const aprovadosPrevBtn = document.getElementById('aprovados-prev');
+  const aprovadosNextBtn = document.getElementById('aprovados-next');
+
+  if (aprovadosWrap) {
+    let isAutoPlaying = true;
+    let autoPlayTimer = null;
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const getScrollStep = () => {
+      const card = aprovadosWrap.querySelector('.aprovado-card');
+      return card ? card.offsetWidth + 20 : 270;
+    };
+
+    const advanceCarousel = (direction = 1) => {
+      const step = getScrollStep();
+      const maxScroll = aprovadosWrap.scrollWidth - aprovadosWrap.clientWidth;
+
+      if (direction === 1) {
+        if (aprovadosWrap.scrollLeft >= maxScroll - 10) {
+          aprovadosWrap.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          aprovadosWrap.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      } else {
+        if (aprovadosWrap.scrollLeft <= 10) {
+          aprovadosWrap.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          aprovadosWrap.scrollBy({ left: -step, behavior: 'smooth' });
+        }
+      }
+    };
+
+    const startAutoPlay = () => {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+      autoPlayTimer = setInterval(() => {
+        if (isAutoPlaying) {
+          advanceCarousel(1);
+        }
+      }, 3000);
+    };
+
+    const pauseAutoPlay = () => {
+      isAutoPlaying = false;
+    };
+
+    const resumeAutoPlay = () => {
+      isAutoPlaying = true;
+    };
+
+    startAutoPlay();
+
+    aprovadosWrap.addEventListener('mouseenter', pauseAutoPlay);
+    aprovadosWrap.addEventListener('mouseleave', resumeAutoPlay);
+    aprovadosWrap.addEventListener('touchstart', pauseAutoPlay, { passive: true });
+    aprovadosWrap.addEventListener('touchend', resumeAutoPlay, { passive: true });
+
+    if (aprovadosNextBtn) {
+      aprovadosNextBtn.addEventListener('click', () => {
+        advanceCarousel(1);
+        pauseAutoPlay();
+        setTimeout(resumeAutoPlay, 5000);
+      });
+    }
+
+    if (aprovadosPrevBtn) {
+      aprovadosPrevBtn.addEventListener('click', () => {
+        advanceCarousel(-1);
+        pauseAutoPlay();
+        setTimeout(resumeAutoPlay, 5000);
+      });
+    }
+
+    // Drag to scroll on desktop
+    aprovadosWrap.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - aprovadosWrap.offsetLeft;
+      scrollLeft = aprovadosWrap.scrollLeft;
+      pauseAutoPlay();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        setTimeout(resumeAutoPlay, 3000);
+      }
+    });
+
+    aprovadosWrap.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - aprovadosWrap.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      aprovadosWrap.scrollLeft = scrollLeft - walk;
+    });
+  }
 });
 
