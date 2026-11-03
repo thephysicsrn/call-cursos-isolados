@@ -1127,12 +1127,19 @@ input, textarea {
   border: none;
   color: var(--call-text-secondary);
   cursor: pointer;
-  padding: 6px;
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--call-yellow);
+  outline-offset: 2px;
 }
 
 .modal-close-btn:hover {
@@ -1479,7 +1486,6 @@ input, textarea {
   display: flex;
   gap: 20px;
   width: max-content;
-  will-change: transform;
 }
 
 .aprovado-card {
@@ -1659,8 +1665,8 @@ input, textarea {
 .bento-card {
   position: relative;
   border-radius: 18px;
-  background: #140E26;
-  border: 1px solid rgba(138, 43, 226, 0.35);
+  background: var(--call-navy-surface);
+  border: 1px solid rgba(82, 39, 234, 0.35);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
   transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
@@ -1680,6 +1686,11 @@ input, textarea {
   min-height: 290px;
   cursor: pointer;
   padding: 22px 20px 18px;
+}
+
+.bento-card-video:focus-visible {
+  outline: 3px solid var(--call-yellow);
+  outline-offset: 4px;
 }
 
 .bento-card-media {
@@ -1716,7 +1727,7 @@ input, textarea {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 900;
-  color: #FFFFFF;
+  color: var(--call-white);
   line-height: 1.08;
   letter-spacing: -0.02em;
   text-transform: uppercase;
@@ -1729,7 +1740,7 @@ input, textarea {
   background: rgba(108, 66, 250, 0.75);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
+  color: var(--call-white);
   font-size: 0.8rem;
   font-weight: 700;
   padding: 4px 12px;
@@ -1745,8 +1756,8 @@ input, textarea {
   height: 52px;
   border-radius: 50%;
   background: rgba(0, 210, 255, 0.22);
-  border: 2px solid #00D2FF;
-  color: #00D2FF;
+  border: 2px solid var(--call-cyan);
+  color: var(--call-cyan);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1782,8 +1793,8 @@ input, textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: rgba(20, 13, 38, 0.92);
-  border: 1px solid rgba(138, 43, 226, 0.32);
+  background: rgba(14, 27, 86, 0.85);
+  border: 1px solid rgba(82, 39, 234, 0.32);
 }
 
 .bento-quote-text {
@@ -1814,7 +1825,7 @@ input, textarea {
   display: block;
   font-size: 0.92rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--call-white);
   line-height: 1.2;
 }
 
@@ -1822,6 +1833,36 @@ input, textarea {
   font-size: 0.74rem;
   color: var(--call-text-muted);
   display: block;
+}
+
+.bento-expand-wrap {
+  display: none;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.bento-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(82, 39, 234, 0.22);
+  border: 1px solid var(--call-purple-light);
+  color: var(--call-white);
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 48px;
+}
+
+.bento-expand-btn:hover {
+  background: var(--call-purple);
+  box-shadow: 0 6px 20px var(--call-purple-glow);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -1834,6 +1875,36 @@ input, textarea {
 @media (max-width: 640px) {
   .bento-social-masonry {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .bento-masonry-col:nth-child(n+3) {
+    display: none;
+  }
+  .bento-social-masonry.is-expanded .bento-masonry-col:nth-child(n+3) {
+    display: flex;
+  }
+  .bento-expand-wrap {
+    display: block;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-glow,
+  .glow-ring,
+  .ticker-glow,
+  .badge-pulse,
+  .hero-halftone-bg,
+  .pop-star,
+  .btn-primary::after {
+    animation: none !important;
+  }
+  .pop-hero-banner {
+    transform: none !important;
+    perspective: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
   }
 }
 

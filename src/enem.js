@@ -116,6 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const watchButtons = document.querySelectorAll('.btn-watch-video, .video-thumbnail-wrap, .bento-card-video');
 
   watchButtons.forEach(btn => {
+    // Keyboard activation (Enter / Space) for accessible div buttons
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const card = btn.closest('.video-card, .bento-card-video');
@@ -264,9 +272,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close modals on background click or Escape key
+  // Close modals on background click or Escape key, and trap focus inside active modal
+  function trapModalFocus(modal) {
+    if (!modal) return;
+    modal.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const visibleFocusable = Array.prototype.filter.call(focusable, el => !el.hasAttribute('disabled') && el.offsetParent !== null);
+      if (!visibleFocusable.length) return;
+      const first = visibleFocusable[0];
+      const last = visibleFocusable[visibleFocusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          last.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === last) {
+          first.focus();
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
   [videoModal, ebookModal].forEach(modal => {
     if (!modal) return;
+    trapModalFocus(modal);
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeVideoModal();
@@ -459,19 +492,43 @@ document.addEventListener('DOMContentLoaded', () => {
       img.setAttribute('draggable', 'false');
     });
 
-    // Auto-scroll drift (0.8px per frame)
+    // Auto-scroll drift (0.8px per frame) with IntersectionObserver & reduced-motion respect
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let isVisible = false;
     let autoScrollId = null;
+
     function stepAutoScroll() {
-      if (!isDown && !isHovered) {
+      if (isVisible && !isDown && !isHovered) {
         aprovadosWrap.scrollLeft += 0.8;
         const maxScroll = aprovadosWrap.scrollWidth - aprovadosWrap.clientWidth;
         if (aprovadosWrap.scrollLeft >= maxScroll - 2) {
           aprovadosWrap.scrollLeft = 0;
         }
       }
+      if (isVisible && !prefersReducedMotion) {
+        autoScrollId = requestAnimationFrame(stepAutoScroll);
+      } else {
+        autoScrollId = null;
+      }
+    }
+
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !autoScrollId) {
+            autoScrollId = requestAnimationFrame(stepAutoScroll);
+          } else if (!isVisible && autoScrollId) {
+            cancelAnimationFrame(autoScrollId);
+            autoScrollId = null;
+          }
+        });
+      }, { threshold: 0.05 });
+      observer.observe(aprovadosWrap);
+    } else if (!prefersReducedMotion) {
+      isVisible = true;
       autoScrollId = requestAnimationFrame(stepAutoScroll);
     }
-    autoScrollId = requestAnimationFrame(stepAutoScroll);
 
     // Hover pause
     aprovadosWrap.addEventListener('mouseenter', () => {
@@ -542,6 +599,19 @@ document.addEventListener('DOMContentLoaded', () => {
     aprovadosWrap.addEventListener('touchend', () => {
       setTimeout(() => { isHovered = false; }, 2000);
     }, { passive: true });
+  }
+
+  // 10. Bento Grid Progressive Disclosure on Mobile
+  const bentoExpandBtn = document.getElementById('bento-expand-btn');
+  const bentoGrid = document.querySelector('.bento-social-masonry');
+  if (bentoExpandBtn && bentoGrid) {
+    bentoExpandBtn.addEventListener('click', () => {
+      const isExpanded = bentoGrid.classList.toggle('is-expanded');
+      bentoExpandBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      bentoExpandBtn.innerHTML = isExpanded
+        ? '<span>Mostrar menos histórias</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>'
+        : '<span>Ver todas as histórias de aprovação</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+    });
   }
 });
 
