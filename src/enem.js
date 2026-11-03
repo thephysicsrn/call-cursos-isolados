@@ -442,104 +442,106 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 9. Approved Students Transition & Interactive Carousel
+  // 9. Approved Students Mouse & Touch Interaction
   const aprovadosWrap = document.getElementById('aprovados-carousel-wrap');
-  const aprovadosPrevBtn = document.getElementById('aprovados-prev');
-  const aprovadosNextBtn = document.getElementById('aprovados-next');
 
   if (aprovadosWrap) {
-    let isAutoPlaying = true;
-    let autoPlayTimer = null;
     let isDown = false;
     let startX = 0;
-    let scrollLeft = 0;
+    let scrollStart = 0;
+    let isHovered = false;
+    let velocity = 0;
+    let lastX = 0;
+    let momentumID = null;
 
-    const getScrollStep = () => {
-      const card = aprovadosWrap.querySelector('.aprovado-card');
-      return card ? card.offsetWidth + 20 : 270;
-    };
+    // Prevent default browser dragging on images
+    aprovadosWrap.querySelectorAll('img').forEach(img => {
+      img.setAttribute('draggable', 'false');
+    });
 
-    const advanceCarousel = (direction = 1) => {
-      const step = getScrollStep();
-      const maxScroll = aprovadosWrap.scrollWidth - aprovadosWrap.clientWidth;
-
-      if (direction === 1) {
-        if (aprovadosWrap.scrollLeft >= maxScroll - 10) {
-          aprovadosWrap.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          aprovadosWrap.scrollBy({ left: step, behavior: 'smooth' });
-        }
-      } else {
-        if (aprovadosWrap.scrollLeft <= 10) {
-          aprovadosWrap.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        } else {
-          aprovadosWrap.scrollBy({ left: -step, behavior: 'smooth' });
+    // Auto-scroll drift (0.8px per frame)
+    let autoScrollId = null;
+    function stepAutoScroll() {
+      if (!isDown && !isHovered) {
+        aprovadosWrap.scrollLeft += 0.8;
+        const maxScroll = aprovadosWrap.scrollWidth - aprovadosWrap.clientWidth;
+        if (aprovadosWrap.scrollLeft >= maxScroll - 2) {
+          aprovadosWrap.scrollLeft = 0;
         }
       }
-    };
-
-    const startAutoPlay = () => {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-      autoPlayTimer = setInterval(() => {
-        if (isAutoPlaying) {
-          advanceCarousel(1);
-        }
-      }, 3000);
-    };
-
-    const pauseAutoPlay = () => {
-      isAutoPlaying = false;
-    };
-
-    const resumeAutoPlay = () => {
-      isAutoPlaying = true;
-    };
-
-    startAutoPlay();
-
-    aprovadosWrap.addEventListener('mouseenter', pauseAutoPlay);
-    aprovadosWrap.addEventListener('mouseleave', resumeAutoPlay);
-    aprovadosWrap.addEventListener('touchstart', pauseAutoPlay, { passive: true });
-    aprovadosWrap.addEventListener('touchend', resumeAutoPlay, { passive: true });
-
-    if (aprovadosNextBtn) {
-      aprovadosNextBtn.addEventListener('click', () => {
-        advanceCarousel(1);
-        pauseAutoPlay();
-        setTimeout(resumeAutoPlay, 5000);
-      });
+      autoScrollId = requestAnimationFrame(stepAutoScroll);
     }
+    autoScrollId = requestAnimationFrame(stepAutoScroll);
 
-    if (aprovadosPrevBtn) {
-      aprovadosPrevBtn.addEventListener('click', () => {
-        advanceCarousel(-1);
-        pauseAutoPlay();
-        setTimeout(resumeAutoPlay, 5000);
-      });
-    }
+    // Hover pause
+    aprovadosWrap.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
 
-    // Drag to scroll on desktop
+    aprovadosWrap.addEventListener('mouseleave', () => {
+      isHovered = false;
+    });
+
+    // Mouse Wheel to horizontal scroll
+    aprovadosWrap.addEventListener('wheel', (e) => {
+      isHovered = true;
+      const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      aprovadosWrap.scrollLeft += delta * 1.2;
+      e.preventDefault();
+      clearTimeout(aprovadosWrap._wheelTimer);
+      aprovadosWrap._wheelTimer = setTimeout(() => {
+        isHovered = false;
+      }, 1500);
+    }, { passive: false });
+
+    // Drag to scroll
     aprovadosWrap.addEventListener('mousedown', (e) => {
       isDown = true;
-      startX = e.pageX - aprovadosWrap.offsetLeft;
-      scrollLeft = aprovadosWrap.scrollLeft;
-      pauseAutoPlay();
+      isHovered = true;
+      cancelAnimationFrame(momentumID);
+      startX = e.pageX;
+      scrollStart = aprovadosWrap.scrollLeft;
+      lastX = e.pageX;
+      velocity = 0;
+      aprovadosWrap.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const currentX = e.pageX;
+      const delta = currentX - lastX;
+      velocity = delta;
+      lastX = currentX;
+      aprovadosWrap.scrollLeft = scrollStart - (currentX - startX);
     });
 
     window.addEventListener('mouseup', () => {
-      if (isDown) {
-        isDown = false;
-        setTimeout(resumeAutoPlay, 3000);
+      if (!isDown) return;
+      isDown = false;
+      aprovadosWrap.classList.remove('is-dragging');
+
+      // Momentum glide
+      function momentumGlide() {
+        if (Math.abs(velocity) > 0.5) {
+          aprovadosWrap.scrollLeft -= velocity;
+          velocity *= 0.94;
+          momentumID = requestAnimationFrame(momentumGlide);
+        } else {
+          isHovered = false;
+        }
       }
+      momentumID = requestAnimationFrame(momentumGlide);
     });
 
-    aprovadosWrap.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - aprovadosWrap.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      aprovadosWrap.scrollLeft = scrollLeft - walk;
-    });
+    // Touch support (mobile)
+    aprovadosWrap.addEventListener('touchstart', () => {
+      isHovered = true;
+    }, { passive: true });
+
+    aprovadosWrap.addEventListener('touchend', () => {
+      setTimeout(() => { isHovered = false; }, 2000);
+    }, { passive: true });
   }
 });
 

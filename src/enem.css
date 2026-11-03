@@ -1431,64 +1431,22 @@ input, textarea {
   color: var(--call-yellow);
 }
 
-.carousel-nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.carousel-arrow-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: var(--call-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.carousel-arrow-btn:hover {
-  background: var(--call-pink);
-  border-color: var(--call-pink);
-  color: #fff;
-  transform: scale(1.08);
-  box-shadow: 0 0 16px rgba(255, 0, 127, 0.5);
-}
-
-.carousel-arrow-btn:active {
-  transform: scale(0.96);
-}
-
-.carousel-play-indicator {
+.aprovados-mouse-hint {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
-  background: rgba(0, 230, 118, 0.1);
-  border: 1px solid rgba(0, 230, 118, 0.3);
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #00E676;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--call-text-secondary);
+  user-select: none;
 }
 
-.pulse-ring {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #00E676;
-  box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);
-  animation: pulseRing 1.8s infinite;
-}
-
-@keyframes pulseRing {
-  0% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-  70% { box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+.aprovados-mouse-hint svg {
+  color: var(--call-yellow);
 }
 
 /* Track & Cards */
@@ -1496,15 +1454,21 @@ input, textarea {
   position: relative;
   width: 100%;
   overflow-x: auto;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
-  padding: 10px 4px 20px;
+  padding: 10px 4px 24px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.aprovados-carousel-wrap:active {
-  cursor: grabbing;
+.aprovados-carousel-wrap.is-dragging {
+  cursor: grabbing !important;
+}
+
+.aprovados-carousel-wrap.is-dragging .aprovado-card {
+  pointer-events: none;
 }
 
 .aprovados-carousel-wrap::-webkit-scrollbar {
@@ -1515,7 +1479,7 @@ input, textarea {
   display: flex;
   gap: 20px;
   width: max-content;
-  transition: transform 0.4s ease;
+  will-change: transform;
 }
 
 .aprovado-card {
