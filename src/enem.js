@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
           URL.revokeObjectURL(url);
           successPdfBtn.innerHTML = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Download Efetuado com Sucesso!</span>
+            <span>Download efetuado com sucesso!</span>
           `;
         };
       }
@@ -444,11 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Interactive Tape Cycling
     if (popTapeBtn && tapeText) {
       const goals = [
-        'Sua Nota 900+ no SiSU 2026',
-        'Rumo à Universidade Federal',
-        'Redação Nota 1000 na Prática',
-        'Vaga Garantida na 1ª Chamada',
-        'Dominando Linguagens & TRI',
+        'Sua nota 900+ no SiSU 2026',
+        'Rumo à universidade federal',
+        'Redação nota 1000 na prática',
+        'Vaga garantida na 1ª chamada',
+        'Domínio em Linguagens e TRI',
         'Medicina • Direito • Exatas • Humanas'
       ];
       let goalIndex = 0;
