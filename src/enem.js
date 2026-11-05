@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const formState = document.getElementById('ebook-form-state');
   const successState = document.getElementById('ebook-success-state');
   const successPdfBtn = document.getElementById('success-pdf-btn');
-  const successWppBtn = document.getElementById('success-wpp-btn');
   const leadPhoneInput = document.getElementById('lead-phone');
 
   // Phone auto-formatter (XX) XXXXX-XXXX
@@ -239,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = btn.closest('.ebook-card');
       const title = card?.querySelector('.ebook-cover-title')?.textContent || 'E-book CaLL ENEM';
       const badge = card?.querySelector('.ebook-type-badge')?.textContent || 'PDF Gratuito';
-      const pdfUrl = card?.getAttribute('data-pdf-url') || 'https://drive.google.com/file/d/1ACRATvD7RKtckkfv5tjF5fbjVGYmXXPW/view?usp=sharing';
+      const pdfUrl = card?.getAttribute('data-pdf-url') || '/assets/Guia-Pratico-Redacao-CaLL-ENEM.pdf';
       currentEbookTitle = title;
       currentPdfUrl = pdfUrl;
       lastActiveElement = document.activeElement;
@@ -293,21 +292,26 @@ document.addEventListener('DOMContentLoaded', () => {
       if (formState) formState.style.display = 'none';
       if (successState) successState.style.display = 'block';
 
-      // Setup direct Google Drive / PDF download link
+      // Setup direct automatic PDF download link
       if (successPdfBtn) {
         successPdfBtn.setAttribute('href', currentPdfUrl);
-        successPdfBtn.onclick = () => {
+        successPdfBtn.setAttribute('download', 'Guia-Pratico-Redacao-CaLL-ENEM.pdf');
+        successPdfBtn.onclick = (event) => {
+          event.preventDefault();
           successPdfBtn.innerHTML = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Download liberado com sucesso!</span>
           `;
-        };
-      }
 
-      // Setup direct WhatsApp dispatch
-      if (successWppBtn) {
-        const msg = encodeURIComponent(`Olá, CaLL! Baixei o material *${currentEbookTitle}* e gostaria de receber informações sobre as turmas e novidades do ENEM! Meu nome é ${name}.`);
-        successWppBtn.href = `https://wa.me/558432060299?text=${msg}`;
+          // Trigger instant direct automatic download
+          const tempLink = document.createElement('a');
+          tempLink.href = currentPdfUrl;
+          tempLink.setAttribute('download', 'Guia-Pratico-Redacao-CaLL-ENEM.pdf');
+          tempLink.style.display = 'none';
+          document.body.appendChild(tempLink);
+          tempLink.click();
+          setTimeout(() => tempLink.remove(), 250);
+        };
       }
     });
   }
