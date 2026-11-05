@@ -804,6 +804,65 @@ input, textarea {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(255, 229, 0, 0.15);
 }
 
+/* Featured E-book Card (Principal) */
+.ebook-card-featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(22, 38, 115, 0.95) 0%, rgba(11, 20, 68, 0.98) 100%);
+  border: 2px solid rgba(255, 229, 0, 0.55);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 229, 0, 0.18);
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: stretch;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ebook-card-featured::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 229, 0, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ebook-card-featured .ebook-cover-wrap {
+  margin-bottom: 0;
+  min-height: 280px;
+  background: linear-gradient(145deg, #1b3593 0%, #0d1b4c 100%);
+  border: 1.5px solid rgba(255, 229, 0, 0.4);
+  box-shadow: inset 6px 0 16px rgba(0, 0, 0, 0.4), 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.ebook-featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FFE500 0%, #FFA500 100%);
+  color: #0A1442;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(255, 229, 0, 0.35);
+}
+
+@media (max-width: 900px) {
+  .ebook-card-featured {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 20px;
+  }
+}
+
 .ebook-cover-wrap {
   background: linear-gradient(135deg, var(--call-cobalt) 0%, var(--call-navy-surface) 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
