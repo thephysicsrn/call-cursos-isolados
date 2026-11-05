@@ -106,7 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Video Player Modal
   const videoModal = document.getElementById('video-modal');
+  const videoPlayerBox = document.getElementById('video-player-box');
   const videoIframe = document.getElementById('video-iframe');
+  const videoElement = document.getElementById('video-element');
+  const modalDriveBtn = document.getElementById('modal-drive-btn');
   const modalVideoTitle = document.getElementById('modal-video-title');
   const modalVideoSpeaker = document.getElementById('modal-video-speaker');
   const closeVideoModalBtn = document.getElementById('close-video-modal');
@@ -131,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       lastActiveElement = document.activeElement;
 
+      const videoSrc = card.getAttribute('data-video-src');
+      const videoDrive = card.getAttribute('data-video-drive');
+      const isVertical = card.getAttribute('data-video-vertical') === 'true';
       const videoId = card.getAttribute('data-video-id') || 'L_LUpnjgPso';
       const title = card.querySelector('.video-card-title, .bento-card-headline')?.textContent?.replace(/\s+/g, ' ') || 'História de Aprovação CaLL';
       const speaker = card.querySelector('.video-instructor-line, .bento-card-tag-pill')?.textContent || 'CaLL Cursos Isolados';
@@ -138,9 +144,43 @@ document.addEventListener('DOMContentLoaded', () => {
       if (modalVideoTitle) modalVideoTitle.textContent = title;
       if (modalVideoSpeaker) modalVideoSpeaker.textContent = speaker;
 
-      // Set embed URL (safe embed with autoplay)
-      if (videoIframe) {
-        videoIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      if (videoPlayerBox) {
+        if (isVertical) {
+          videoPlayerBox.classList.add('is-vertical');
+        } else {
+          videoPlayerBox.classList.remove('is-vertical');
+        }
+      }
+
+      if (modalDriveBtn) {
+        if (videoDrive) {
+          modalDriveBtn.href = videoDrive;
+          modalDriveBtn.style.display = 'inline-flex';
+        } else {
+          modalDriveBtn.style.display = 'none';
+        }
+      }
+
+      if (videoSrc) {
+        if (videoIframe) {
+          videoIframe.src = '';
+          videoIframe.style.display = 'none';
+        }
+        if (videoElement) {
+          videoElement.style.display = 'block';
+          videoElement.currentTime = 0;
+          videoElement.play().catch(() => {});
+        }
+      } else {
+        if (videoElement) {
+          videoElement.pause();
+          videoElement.currentTime = 0;
+          videoElement.style.display = 'none';
+        }
+        if (videoIframe) {
+          videoIframe.style.display = 'block';
+          videoIframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+        }
       }
 
       if (videoModal) {
@@ -156,6 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
       videoModal.classList.remove('active');
       document.body.style.overflow = '';
       if (videoIframe) videoIframe.src = '';
+      if (videoElement) {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+        videoElement.style.display = 'none';
+      }
       lastActiveElement?.focus();
     }
   }

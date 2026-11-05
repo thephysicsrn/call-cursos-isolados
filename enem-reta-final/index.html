@@ -549,13 +549,13 @@
         </div>
 
         <!-- Video 5 -->
-        <div class="video-card" data-category="redacao" data-video-id="kJQP7kiw5Fk">
+        <div class="video-card" data-category="redacao" data-video-src="/assets/autoria.mp4" data-video-drive="https://drive.google.com/file/d/1oc1thWiy-rErKAJh07UlIJ0j-La3bQC_/view?usp=sharing" data-video-vertical="true">
           <div class="video-thumbnail-wrap">
-            <img src="/assets/prof-rosemberg-desk.jpg" alt="Aula de Redação - Repertório Curinga" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
+            <img src="/assets/prof-rosemberg-autoria.jpg" alt="Aula de Redação - Autoria na Redação com Prof. Rosemberg Ramalho" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
             <span class="video-tag-badge badge-redacao">Redação</span>
             <span class="video-duration-badge">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              31 min
+              1 min
             </span>
             <div class="video-play-btn-overlay">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -566,9 +566,9 @@
               <span class="video-instructor-dot"></span>
               <span>Prof. Rosemberg Ramalho</span>
             </div>
-            <h3 class="video-card-title">Constituição de 1988 e cidadania de papel na prática</h3>
+            <h3 class="video-card-title">Construção de autoria na redação do Enem</h3>
             <p class="video-card-desc">
-              Como utilizar autores clássicos como Gilberto Dimenstein, Zygmunt Bauman e a Carta Magna de forma produtiva e articulada aos argumentos.
+              Descubra o que a banca do Inep realmente busca na marca de autoria e aprenda como estruturar argumentos próprios e autênticos para alcançar os 200 pontos nas Competências 2 e 3.
             </p>
             <button class="btn-watch-video">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -1261,15 +1261,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="video-player-container">
+        <div class="video-player-container" id="video-player-box">
           <iframe id="video-iframe" src="" title="Videoaula CaLL Isolados" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <video id="video-element" playsinline controls style="display: none;">
+            <source src="/assets/autoria.mp4" type="video/mp4" />
+          </video>
         </div>
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
           <span style="font-size: 0.85rem; color: var(--call-text-secondary);">Gostou desta aula? Indique o site para um amigo no WhatsApp e libere os e-books em PDF!</span>
-          <a href="#materiais" class="btn-download-ebook" style="padding: 8px 16px; font-size: 0.85rem;" onclick="document.getElementById('video-modal').classList.remove('active'); document.body.style.overflow='';">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-            <span>Indicar e liberar e-books</span>
-          </a>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <a id="modal-drive-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-download-ebook" style="display: none; padding: 8px 16px; font-size: 0.85rem; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); text-decoration: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <span>Ver no Google Drive</span>
+            </a>
+            <a href="#materiais" class="btn-download-ebook" style="padding: 8px 16px; font-size: 0.85rem;" onclick="document.getElementById('video-modal').classList.remove('active'); document.body.style.overflow='';">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              <span>Indicar e liberar e-books</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
