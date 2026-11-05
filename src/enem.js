@@ -519,6 +519,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // 7.1. Featured Spotlight Video Autoplay & Controls
+  const spotlightVideo = document.getElementById('spotlight-video-player');
+  const soundToggleBtn = document.getElementById('spotlight-sound-toggle');
+  const playOverlayBtn = document.getElementById('spotlight-play-overlay');
+  const progressBar = document.getElementById('spotlight-progress-bar');
+  const deviceFrame = document.querySelector('.spotlight-device-frame');
+
+  if (spotlightVideo) {
+    // Autoplay when in viewport
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          spotlightVideo.play().catch(() => {});
+        } else {
+          spotlightVideo.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    videoObserver.observe(spotlightVideo);
+
+    // Sound toggle
+    if (soundToggleBtn) {
+      soundToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        spotlightVideo.muted = !spotlightVideo.muted;
+        const iconMuted = soundToggleBtn.querySelector('.icon-muted');
+        const iconUnmuted = soundToggleBtn.querySelector('.icon-unmuted');
+        const soundText = soundToggleBtn.querySelector('.sound-btn-text');
+
+        if (spotlightVideo.muted) {
+          if (iconMuted) iconMuted.style.display = 'inline-block';
+          if (iconUnmuted) iconUnmuted.style.display = 'none';
+          if (soundText) soundText.textContent = 'Ativar som';
+        } else {
+          if (iconMuted) iconMuted.style.display = 'none';
+          if (iconUnmuted) iconUnmuted.style.display = 'inline-block';
+          if (soundText) soundText.textContent = 'Silenciar';
+        }
+      });
+    }
+
+    // Toggle play/pause on click on the video or device frame
+    const togglePlay = () => {
+      if (spotlightVideo.paused) {
+        spotlightVideo.play().catch(() => {});
+        if (playOverlayBtn) playOverlayBtn.classList.remove('is-paused');
+      } else {
+        spotlightVideo.pause();
+        if (playOverlayBtn) playOverlayBtn.classList.add('is-paused');
+      }
+    };
+
+    if (deviceFrame) {
+      deviceFrame.addEventListener('click', (e) => {
+        if (e.target.closest('#spotlight-sound-toggle')) return;
+        togglePlay();
+      });
+    }
+
+    // Update progress bar
+    spotlightVideo.addEventListener('timeupdate', () => {
+      if (progressBar && spotlightVideo.duration) {
+        const pct = (spotlightVideo.currentTime / spotlightVideo.duration) * 100;
+        progressBar.style.width = `${pct}%`;
+      }
+    });
+
+    spotlightVideo.addEventListener('play', () => {
+      if (playOverlayBtn) playOverlayBtn.classList.remove('is-paused');
+    });
+
+    spotlightVideo.addEventListener('pause', () => {
+      if (playOverlayBtn) playOverlayBtn.classList.add('is-paused');
+    });
+  }
+
   // 8.1. 3D Interactive Parallax & Page Flip on Featured E-book
   const ebookStage = document.getElementById('ebook-3d-stage');
   const ebookWrapper = document.getElementById('ebook-3d-wrapper');
