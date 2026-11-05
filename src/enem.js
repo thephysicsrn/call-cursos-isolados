@@ -518,14 +518,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8.1. 3D Interactive Parallax & Page Flip on Featured E-book
   const ebookStage = document.getElementById('ebook-3d-stage');
   const ebookWrapper = document.getElementById('ebook-3d-wrapper');
-  const ebookIndicator = document.getElementById('ebook-flip-indicator');
-  const flipText = ebookIndicator ? ebookIndicator.querySelector('.flip-text') : null;
 
   if (ebookStage && ebookWrapper) {
-    ebookStage.addEventListener('mouseenter', () => {
-      if (flipText) flipText.textContent = 'Folheando e-book...';
-    });
-
     ebookStage.addEventListener('mousemove', (e) => {
       const rect = ebookStage.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
@@ -537,7 +531,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ebookStage.addEventListener('mouseleave', () => {
       ebookWrapper.style.transform = '';
-      if (flipText) flipText.textContent = 'Folhear páginas';
     });
   }
 

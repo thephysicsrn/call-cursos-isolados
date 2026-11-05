@@ -867,33 +867,6 @@ input, textarea {
   cursor: pointer;
 }
 
-.ebook-flip-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--call-text-secondary);
-  margin-bottom: 10px;
-  backdrop-filter: blur(8px);
-  transition: all 0.35s ease;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.ebook-3d-stage:hover .ebook-flip-indicator,
-.ebook-card-featured:hover .ebook-flip-indicator {
-  background: rgba(255, 229, 0, 0.2);
-  border-color: rgba(255, 229, 0, 0.5);
-  color: var(--call-yellow);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 229, 0, 0.25);
-}
-
 .ebook-3d-book-wrapper {
   position: relative;
   display: inline-block;
