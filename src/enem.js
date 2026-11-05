@@ -230,7 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  let currentEbookTitle = 'Material de Apoio CaLL';
+  let currentEbookTitle = 'Guia Prático da Redação: Dicas e Estratégias';
+  let currentPdfUrl = 'https://drive.google.com/file/d/1ACRATvD7RKtckkfv5tjF5fbjVGYmXXPW/view?usp=sharing';
 
   downloadBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -238,7 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = btn.closest('.ebook-card');
       const title = card?.querySelector('.ebook-cover-title')?.textContent || 'E-book CaLL ENEM';
       const badge = card?.querySelector('.ebook-type-badge')?.textContent || 'PDF Gratuito';
+      const pdfUrl = card?.getAttribute('data-pdf-url') || 'https://drive.google.com/file/d/1ACRATvD7RKtckkfv5tjF5fbjVGYmXXPW/view?usp=sharing';
       currentEbookTitle = title;
+      currentPdfUrl = pdfUrl;
       lastActiveElement = document.activeElement;
 
       if (modalEbookTitle) modalEbookTitle.textContent = title;
@@ -290,21 +293,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (formState) formState.style.display = 'none';
       if (successState) successState.style.display = 'block';
 
-      // Setup simulated direct download trigger
+      // Setup direct Google Drive / PDF download link
       if (successPdfBtn) {
+        successPdfBtn.setAttribute('href', currentPdfUrl);
         successPdfBtn.onclick = () => {
-          const blob = new Blob([`CaLL Cursos Isolados\n\nMaterial: ${currentEbookTitle}\nAluno: ${name}\n\nBons estudos na sua Reta Final!`], { type: 'text/plain;charset=utf-8' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `${currentEbookTitle.replace(/[^a-zA-Z0-9]/g, '_')}_CaLL.txt`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
           successPdfBtn.innerHTML = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Download efetuado com sucesso!</span>
+            <span>Download liberado com sucesso!</span>
           `;
         };
       }
@@ -518,6 +513,23 @@ document.addEventListener('DOMContentLoaded', () => {
         createBurst(bRect.left - rect.left + bRect.width / 2, bRect.top - rect.top + bRect.height / 2);
       });
     }
+  }
+
+  // 8.1. 3D Interactive Parallax on Featured E-book
+  const ebookStage = document.getElementById('ebook-3d-stage');
+  const ebookImg = document.getElementById('ebook-3d-book');
+  if (ebookStage && ebookImg) {
+    ebookStage.addEventListener('mousemove', (e) => {
+      const rect = ebookStage.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateY = (x / (rect.width / 2)) * 14 - 6;
+      const rotateX = -(y / (rect.height / 2)) * 12 + 2;
+      ebookImg.style.transform = `perspective(1000px) rotateY(${rotateY.toFixed(1)}deg) rotateX(${rotateX.toFixed(1)}deg) scale(1.05) translateY(-6px)`;
+    });
+    ebookStage.addEventListener('mouseleave', () => {
+      ebookImg.style.transform = 'rotateY(-10deg) rotateX(4deg) translateY(0) scale(1)';
+    });
   }
 
   // 9. Approved Students Mouse & Touch Interaction
