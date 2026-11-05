@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Open WhatsApp to share with a friend and unlock material
       const shareUrl = window.location.href.split('#')[0];
-      const referralMessage = encodeURIComponent(`Opa! Achei essa página de Reta Final do CaLL com videoaulas e e-books gratuitos pro ENEM 2026. Dá uma olhada aqui pra gente revisar juntos: ${shareUrl}`);
+      const referralMessage = encodeURIComponent(`Olá! Encontrei esta página de Reta Final do CaLL com videoaulas e e-books gratuitos para o ENEM 2026. Acesse aqui para revisarmos juntos: ${shareUrl}`);
       window.open(`https://wa.me/?text=${referralMessage}`, '_blank');
 
       // Hide form and show success state
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Setup direct WhatsApp dispatch
       if (successWppBtn) {
-        const msg = encodeURIComponent(`Olá, CaLL! Baixei o material *${currentEbookTitle}* e gostaria de receber avisos sobre os Aulões Presenciais e Intensivo do ENEM! Meu nome é ${name}.`);
+        const msg = encodeURIComponent(`Olá, CaLL! Baixei o material *${currentEbookTitle}* e gostaria de receber informações sobre as turmas e novidades do ENEM! Meu nome é ${name}.`);
         successWppBtn.href = `https://wa.me/558432060299?text=${msg}`;
       }
     });
