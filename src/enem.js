@@ -515,20 +515,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 8.1. 3D Interactive Parallax on Featured E-book
+  // 8.1. 3D Interactive Parallax & Page Flip on Featured E-book
   const ebookStage = document.getElementById('ebook-3d-stage');
-  const ebookImg = document.getElementById('ebook-3d-book');
-  if (ebookStage && ebookImg) {
+  const ebookWrapper = document.getElementById('ebook-3d-wrapper');
+  const ebookIndicator = document.getElementById('ebook-flip-indicator');
+  const flipText = ebookIndicator ? ebookIndicator.querySelector('.flip-text') : null;
+
+  if (ebookStage && ebookWrapper) {
+    ebookStage.addEventListener('mouseenter', () => {
+      if (flipText) flipText.textContent = 'Folheando e-book...';
+    });
+
     ebookStage.addEventListener('mousemove', (e) => {
       const rect = ebookStage.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      const rotateY = (x / (rect.width / 2)) * 14 - 6;
-      const rotateX = -(y / (rect.height / 2)) * 12 + 2;
-      ebookImg.style.transform = `perspective(1000px) rotateY(${rotateY.toFixed(1)}deg) rotateX(${rotateX.toFixed(1)}deg) scale(1.05) translateY(-6px)`;
+      const rotateY = (x / (rect.width / 2)) * 14 - 4;
+      const rotateX = -(y / (rect.height / 2)) * 10 + 2;
+      ebookWrapper.style.transform = `rotateY(${rotateY.toFixed(1)}deg) rotateX(${rotateX.toFixed(1)}deg) translateY(-8px) scale(1.04)`;
     });
+
     ebookStage.addEventListener('mouseleave', () => {
-      ebookImg.style.transform = 'rotateY(-10deg) rotateX(4deg) translateY(0) scale(1)';
+      ebookWrapper.style.transform = '';
+      if (flipText) flipText.textContent = 'Folhear páginas';
     });
   }
 

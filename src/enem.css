@@ -820,7 +820,7 @@ input, textarea {
   border: 2px solid rgba(255, 229, 0, 0.55);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 229, 0, 0.18);
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 32px;
   align-items: stretch;
   padding: 32px;
@@ -841,7 +841,7 @@ input, textarea {
 
 .ebook-card-featured .ebook-cover-wrap {
   margin-bottom: 0;
-  min-height: 380px;
+  min-height: 400px;
   background: radial-gradient(circle at 50% 40%, rgba(27, 53, 147, 0.75) 0%, rgba(10, 18, 55, 0.98) 100%);
   border: 1.5px solid rgba(255, 229, 0, 0.45);
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5), 0 16px 36px rgba(0, 0, 0, 0.5);
@@ -856,48 +856,228 @@ input, textarea {
 
 /* 3D E-book Stage & Interaction */
 .ebook-3d-stage {
-  perspective: 1200px;
+  perspective: 1400px;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 14px 0;
+  padding: 6px 0 12px;
   cursor: pointer;
+}
+
+.ebook-flip-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--call-text-secondary);
+  margin-bottom: 10px;
+  backdrop-filter: blur(8px);
+  transition: all 0.35s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ebook-3d-stage:hover .ebook-flip-indicator,
+.ebook-card-featured:hover .ebook-flip-indicator {
+  background: rgba(255, 229, 0, 0.2);
+  border-color: rgba(255, 229, 0, 0.5);
+  color: var(--call-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 229, 0, 0.25);
+}
+
+.ebook-3d-book-wrapper {
+  position: relative;
+  display: inline-block;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  transform: rotateY(-10deg) rotateX(4deg) translateZ(0);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
 }
 
 .ebook-3d-ambient-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 240px;
-  height: 240px;
+  width: 270px;
+  height: 270px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 0, 127, 0.4) 0%, rgba(255, 229, 0, 0.22) 40%, transparent 70%);
-  filter: blur(28px);
+  filter: blur(30px);
   pointer-events: none;
   border-radius: 50%;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .ebook-3d-book-img {
-  max-width: 230px;
+  max-width: 260px;
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.8)) drop-shadow(0 6px 14px rgba(255, 229, 0, 0.25));
-  transform: rotateY(-10deg) rotateX(4deg) translateZ(0);
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease;
-  will-change: transform;
+  filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.8)) drop-shadow(0 6px 16px rgba(255, 229, 0, 0.25));
+  transition: filter 0.5s ease;
+}
+
+.ebook-3d-stage:hover .ebook-3d-book-wrapper,
+.ebook-card-featured:hover .ebook-3d-book-wrapper {
+  transform: rotateY(-3deg) rotateX(2deg) translateY(-8px) scale(1.04);
 }
 
 .ebook-3d-stage:hover .ebook-3d-book-img,
 .ebook-card-featured:hover .ebook-3d-book-img {
-  transform: rotateY(-2deg) rotateX(2deg) translateY(-10px) scale(1.05);
-  filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 10px 26px rgba(255, 0, 127, 0.5));
+  filter: drop-shadow(0 30px 44px rgba(0, 0, 0, 0.9)) drop-shadow(0 10px 26px rgba(255, 0, 127, 0.5));
 }
 
 .ebook-3d-stage:hover .ebook-3d-ambient-glow,
+.ebook-card-featured:hover .ebook-3d-ambient-glow {
+  transform: translate(-50%, -50%) scale(1.15);
+  opacity: 1;
+}
+
+/* 3D Page Flipping Deck */
+.ebook-flipping-deck {
+  position: absolute;
+  top: 3.5%;
+  left: 6.8%;
+  width: 84.5%;
+  height: 89.8%;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.35s;
+  z-index: 10;
+}
+
+.ebook-3d-stage:hover .ebook-flipping-deck,
+.ebook-card-featured:hover .ebook-flipping-deck {
+  opacity: 1;
+  transition: opacity 0.2s ease 0s;
+}
+
+.ebook-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 50%;
+  transform-style: preserve-3d;
+  border-radius: 2px 6px 6px 2px;
+  transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.75s ease;
+  transform: rotateY(0deg) translateZ(0px);
+  will-change: transform;
+}
+
+.leaf-1 {
+  z-index: 3;
+  transform: rotateY(0deg) translateZ(3px);
+  transition-delay: 0.3s;
+}
+
+.leaf-2 {
+  z-index: 2;
+  transform: rotateY(0deg) translateZ(2px);
+  transition-delay: 0.15s;
+}
+
+.leaf-3 {
+  z-index: 1;
+  transform: rotateY(0deg) translateZ(1px);
+  transition-delay: 0s;
+}
+
+.leaf-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 2px 6px 6px 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.leaf-front {
+  background: #FAF8F5;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.leaf-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+.leaf-curl-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(255, 255, 255, 0.3) 30%, transparent 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.leaf-back {
+  background: #F4EFEB;
+  transform: rotateY(180deg);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 4px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+.leaf-back-content {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg, #FAF8F5, #FAF8F5 14px, #ECE6DC 14px, #ECE6DC 16px);
+  opacity: 0.85;
+}
+
+/* Staggered page turn on hover */
+.ebook-3d-stage:hover .leaf-1,
+.ebook-card-featured:hover .leaf-1 {
+  transform: rotateY(-130deg) skewY(-2.5deg) translateZ(3px);
+  box-shadow: -10px 14px 28px rgba(0, 0, 0, 0.6);
+  transition-delay: 0.08s;
+}
+
+.ebook-3d-stage:hover .leaf-2,
+.ebook-card-featured:hover .leaf-2 {
+  transform: rotateY(-105deg) skewY(-1.5deg) translateZ(2px);
+  box-shadow: -8px 12px 22px rgba(0, 0, 0, 0.5);
+  transition-delay: 0.32s;
+}
+
+.ebook-3d-stage:hover .leaf-3,
+.ebook-card-featured:hover .leaf-3 {
+  transform: rotateY(-78deg) skewY(-0.8deg) translateZ(1px);
+  box-shadow: -6px 10px 18px rgba(0, 0, 0, 0.4);
+  transition-delay: 0.56s;
+}
+
+.ebook-3d-stage:hover .leaf-curl-shadow,
+.ebook-card-featured:hover .leaf-curl-shadow {
+  opacity: 1;
+}
+
 .ebook-card-featured:hover .ebook-3d-ambient-glow {
   transform: translate(-50%, -50%) scale(1.15);
   opacity: 1;

@@ -630,9 +630,44 @@
             <span class="ebook-featured-badge">★ E-book principal • Cartilha oficial</span>
             
             <!-- 3D Book Stage -->
-            <div class="ebook-3d-stage" id="ebook-3d-stage" title="Passe o mouse para interagir com o e-book em 3D!">
+            <div class="ebook-3d-stage" id="ebook-3d-stage" title="Passe o mouse para folhear o e-book em 3D!">
               <div class="ebook-3d-ambient-glow"></div>
-              <img src="/assets/ebook-3d-guia-pratico.png" alt="Guia Prático da Redação - Dicas e Estratégias CaLL" class="ebook-3d-book-img" id="ebook-3d-book" width="340" height="508" loading="lazy" />
+              <div class="ebook-flip-indicator" id="ebook-flip-indicator">
+                <span class="flip-sparkle">📖</span>
+                <span class="flip-text">Folhear páginas</span>
+              </div>
+              <div class="ebook-3d-book-wrapper" id="ebook-3d-wrapper">
+                <img src="/assets/ebook-3d-guia-pratico.png" alt="Guia Prático da Redação - Dicas e Estratégias CaLL" class="ebook-3d-book-img" id="ebook-3d-book" width="340" height="508" loading="lazy" />
+                <div class="ebook-flipping-deck" id="ebook-flipping-deck" aria-hidden="true">
+                  <div class="ebook-leaf leaf-1" data-page="1">
+                    <div class="leaf-face leaf-front">
+                      <img src="/assets/ebook-preview-page-1.jpg" alt="Página 1 do e-book" />
+                      <div class="leaf-curl-shadow"></div>
+                    </div>
+                    <div class="leaf-face leaf-back">
+                      <div class="leaf-back-content"></div>
+                    </div>
+                  </div>
+                  <div class="ebook-leaf leaf-2" data-page="2">
+                    <div class="leaf-face leaf-front">
+                      <img src="/assets/ebook-preview-page-2.jpg" alt="Página 2 do e-book" />
+                      <div class="leaf-curl-shadow"></div>
+                    </div>
+                    <div class="leaf-face leaf-back">
+                      <div class="leaf-back-content"></div>
+                    </div>
+                  </div>
+                  <div class="ebook-leaf leaf-3" data-page="3">
+                    <div class="leaf-face leaf-front">
+                      <img src="/assets/ebook-preview-page-3.jpg" alt="Página 3 do e-book" />
+                      <div class="leaf-curl-shadow"></div>
+                    </div>
+                    <div class="leaf-face leaf-back">
+                      <div class="leaf-back-content"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="ebook-3d-footer-info">
