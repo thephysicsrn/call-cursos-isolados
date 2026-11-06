@@ -83,6 +83,7 @@ html {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 body {
@@ -258,7 +259,12 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   height: 76px;
-  gap: 24px;
+  gap: clamp(10px, 1.4vw, 24px);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 2vw, 32px);
+  box-sizing: border-box;
 }
 
 .brand-logo {
@@ -324,7 +330,7 @@ button, input, select, textarea {
 .nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 1.6vw, 26px);
+  gap: clamp(8px, 1.1vw, 18px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -333,10 +339,10 @@ button, input, select, textarea {
 
 .nav-link {
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--call-text-secondary);
   position: relative;
-  padding: 8px 2px;
+  padding: 6px 2px;
   white-space: nowrap;
   text-decoration: none;
   letter-spacing: 0.2px;
@@ -366,7 +372,7 @@ button, input, select, textarea {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(8px, 1vw, 12px);
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -374,17 +380,18 @@ button, input, select, textarea {
 .btn-whatsapp-header {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
+  gap: 7px;
+  padding: 7px clamp(10px, 1vw, 14px);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--call-border);
   border-radius: var(--radius-full);
   color: var(--call-text-primary);
-  font-size: 0.82rem;
+  font-size: 0.80rem;
   font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .btn-whatsapp-header:hover {
@@ -392,6 +399,14 @@ button, input, select, textarea {
   border-color: rgba(255, 255, 255, 0.3);
   color: var(--call-yellow);
   transform: translateY(-1px);
+}
+
+.phone-short {
+  display: none;
+}
+
+.phone-full {
+  display: inline;
 }
 
 .btn-cta-nav {
@@ -402,14 +417,15 @@ button, input, select, textarea {
   color: var(--call-navy-deep);
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 0.84rem;
-  padding: 10px 22px;
+  font-size: 0.82rem;
+  padding: 8px clamp(14px, 1.4vw, 20px);
   border-radius: var(--radius-full);
   box-shadow: 0 4px 18px rgba(255, 229, 0, 0.35);
   white-space: nowrap;
   text-decoration: none;
   letter-spacing: 0.2px;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .btn-cta-nav:hover {
@@ -2760,15 +2776,30 @@ select.form-input option {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1360px) {
+  .phone-full {
+    display: none;
+  }
+  .phone-short {
+    display: inline;
+  }
+  .nav-list {
+    gap: 12px;
+  }
+  .nav-link {
+    font-size: 0.80rem;
+  }
+}
+
+@media (max-width: 1140px) {
   .btn-whatsapp-header .btn-label {
     display: none;
   }
   .btn-whatsapp-header {
-    padding: 8px 10px;
+    padding: 7px 10px;
   }
   .nav-list {
-    gap: 14px;
+    gap: 10px;
   }
 }
 
