@@ -66,6 +66,13 @@ def main():
             else:
                 file_size = os.path.getsize(l_item_path)
                 size_str = f"{file_size / (1024*1024):.2f} MB" if file_size > 1024*1024 else f"{file_size / 1024:.1f} KB"
+                try:
+                    remote_size = ftp.size(item)
+                    if remote_size == file_size:
+                        print(f"⏩ Mantendo: {r_item_path} ({size_str}) - inalterado")
+                        continue
+                except Exception:
+                    pass
                 print(f"⬆️  Enviando: {r_item_path} ({size_str})...", end="", flush=True)
                 with open(l_item_path, "rb") as f:
                     ftp.storbinary(f"STOR {item}", f, blocksize=65536)
