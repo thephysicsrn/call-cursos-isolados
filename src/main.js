@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       message += `Gostaria de receber a grade de horários, valores e o IV Caderno de Propostas CaLL 2026. Obrigado!`;
 
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/558432060299?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/5584981090299?text=${encodedMessage}`;
 
       window.open(whatsappUrl, '_blank');
     });
