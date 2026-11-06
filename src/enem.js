@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let currentEbookTitle = 'Guia Prático da Redação: Dicas e Estratégias';
-  let currentPdfUrl = 'https://drive.google.com/file/d/1ACRATvD7RKtckkfv5tjF5fbjVGYmXXPW/view?usp=sharing';
+  let currentPdfUrl = 'https://www.callnatal.com.br/assets/Guia-Pratico-Redacao-CaLL-ENEM.pdf';
 
   downloadBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -238,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = btn.closest('.ebook-card');
       const title = card?.querySelector('.ebook-cover-title')?.textContent || 'E-book CaLL ENEM';
       const badge = card?.querySelector('.ebook-type-badge')?.textContent || 'PDF Gratuito';
-      const pdfUrl = card?.getAttribute('data-pdf-url') || '/assets/Guia-Pratico-Redacao-CaLL-ENEM.pdf';
+      const rawPdfUrl = card?.getAttribute('data-pdf-url') || 'https://www.callnatal.com.br/assets/Guia-Pratico-Redacao-CaLL-ENEM.pdf';
+      const pdfUrl = rawPdfUrl.startsWith('http') ? rawPdfUrl : `https://www.callnatal.com.br${rawPdfUrl}`;
       currentEbookTitle = title;
       currentPdfUrl = pdfUrl;
       lastActiveElement = document.activeElement;
@@ -293,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successState) successState.style.display = 'block';
 
       // Setup direct automatic PDF download link
+      const successViewerBtn = document.getElementById('success-viewer-btn');
       if (successPdfBtn) {
         successPdfBtn.setAttribute('href', currentPdfUrl);
         successPdfBtn.setAttribute('download', 'Guia-Pratico-Redacao-CaLL-ENEM.pdf');
@@ -304,10 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             successPdfBtn.innerHTML = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Download iniciado! Clique para abrir novamente</span>
+              <span>PDF aberto com sucesso!</span>
             `;
           }, 350);
         };
+      }
+      if (successViewerBtn) {
+        successViewerBtn.setAttribute('href', currentPdfUrl);
+        successViewerBtn.setAttribute('target', '_blank');
+        successViewerBtn.setAttribute('rel', 'noopener noreferrer');
       }
     });
   }
