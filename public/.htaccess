@@ -24,3 +24,8 @@
   ExpiresByType text/css "access plus 1 week"
   ExpiresByType application/javascript "access plus 1 week"
 </IfModule>
+
+# Tipos MIME e suporte a PDF
+<IfModule mod_mime.c>
+  AddType application/pdf .pdf
+</IfModule>

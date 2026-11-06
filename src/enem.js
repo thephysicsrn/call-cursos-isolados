@@ -296,21 +296,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successPdfBtn) {
         successPdfBtn.setAttribute('href', currentPdfUrl);
         successPdfBtn.setAttribute('download', 'Guia-Pratico-Redacao-CaLL-ENEM.pdf');
-        successPdfBtn.onclick = (event) => {
-          event.preventDefault();
-          successPdfBtn.innerHTML = `
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Download liberado com sucesso!</span>
-          `;
+        successPdfBtn.setAttribute('target', '_blank');
+        successPdfBtn.setAttribute('rel', 'noopener noreferrer');
 
-          // Trigger instant direct automatic download
-          const tempLink = document.createElement('a');
-          tempLink.href = currentPdfUrl;
-          tempLink.setAttribute('download', 'Guia-Pratico-Redacao-CaLL-ENEM.pdf');
-          tempLink.style.display = 'none';
-          document.body.appendChild(tempLink);
-          tempLink.click();
-          setTimeout(() => tempLink.remove(), 250);
+        // Do not prevent default! Allow native browser download/view in new tab
+        successPdfBtn.onclick = () => {
+          setTimeout(() => {
+            successPdfBtn.innerHTML = `
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Download iniciado! Clique para abrir novamente</span>
+            `;
+          }, 350);
         };
       }
     });
