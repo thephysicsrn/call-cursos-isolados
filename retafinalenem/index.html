@@ -260,11 +260,107 @@
     <div class="container-wide">
       
       <div class="section-header text-center">
-        <span class="badge-pulsing" style="margin-bottom: 14px; display: inline-flex;"><span class="pulse-dot"></span> AUTORIDADE COMPROVADA NO ENEM & SISU</span>
         <h2 class="section-title">Mural dos aprovados: quem vive o CaLL conquista a vaga</h2>
         <p class="section-subtitle">
           Dezenas de alunos que confiaram no método CaLL e hoje celebram suas aprovações em Medicina, Direito, Odontologia, Engenharias e nas melhores universidades públicas. Inspire-se na sua Reta Final!
         </p>
+      </div>
+
+      <!-- Featured Aprovados 2025 Video Spotlight -->
+      <div class="aprovados-video-spotlight">
+        <div class="aprovados-video-layout">
+          <!-- Device frame for vertical 9:16 video -->
+          <div class="spotlight-player-wrapper">
+            <div class="spotlight-ambient-glow" style="background: radial-gradient(circle, rgba(0, 230, 118, 0.28) 0%, rgba(255, 229, 0, 0.2) 50%, transparent 75%);"></div>
+            <div class="spotlight-device-frame" style="border-color: rgba(0, 230, 118, 0.65);">
+              
+              <div class="spotlight-top-bar">
+                <span class="spotlight-live-tag" style="background: rgba(0, 230, 118, 0.2); border-color: rgba(0, 230, 118, 0.5); color: #00E676;">
+                  <span class="live-dot" style="background: #00E676; box-shadow: 0 0 8px #00E676;"></span> Aprovados SiSU 2025
+                </span>
+                <button type="button" class="spotlight-sound-btn" id="aprovados-sound-toggle" aria-label="Ativar som do vídeo">
+                  <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                  <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <span class="sound-btn-text">Ativar som</span>
+                </button>
+              </div>
+
+              <video 
+                id="aprovados-video-player"
+                class="spotlight-video-element"
+                src="/assets/video-aprovados-2025.mp4"
+                poster="/assets/video-aprovados-poster.jpg"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              ></video>
+
+              <button type="button" class="spotlight-play-overlay" id="aprovados-play-overlay" aria-label="Pausar ou reproduzir vídeo">
+                <div class="spotlight-play-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </button>
+
+              <div class="spotlight-progress-track">
+                <div class="spotlight-progress-bar" id="aprovados-progress-bar"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Accompanying Content Side -->
+          <div class="spotlight-content-side">
+            <h3 class="spotlight-side-title">
+              Celebre com quem conquistou as vagas mais concorridas do país
+            </h3>
+            <p class="spotlight-side-desc">
+              O resultado de quem treinou com redações corrigidas individualmente e aulas aprofundadas de Linguagens. Veja a vibração real dos nossos alunos aprovados em Medicina, Direito, Psicologia, Fisioterapia e nos cursos mais concorridos da UFRN e de universidades federais de todo o Brasil.
+            </p>
+
+            <ul class="spotlight-checklist">
+              <li>
+                <div class="check-icon-wrap" style="color: #00E676; border-color: rgba(0, 230, 118, 0.4); background: rgba(0, 230, 118, 0.12);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Notas 940+, 960+ e 980 na redação do Enem</strong>
+                  <span>Média de pontuação dos alunos CaLL muito superior à média nacional.</span>
+                </div>
+              </li>
+              <li>
+                <div class="check-icon-wrap" style="color: #00E676; border-color: rgba(0, 230, 118, 0.4); background: rgba(0, 230, 118, 0.12);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>1º e 2º Lugares gerais no SiSU Federal</strong>
+                  <span>Alunos conquistando as primeiras colocações nos cursos mais disputados.</span>
+                </div>
+              </li>
+              <li>
+                <div class="check-icon-wrap" style="color: #00E676; border-color: rgba(0, 230, 118, 0.4); background: rgba(0, 230, 118, 0.12);">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Método validado há mais de 25 anos em Natal/RN</strong>
+                  <span>Acompanhamento direto e próximo com os fundadores e professores titulares.</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="spotlight-action-row">
+              <a href="https://wa.me/558432060299?text=Ol%C3%A1!%20Vi%20o%20v%C3%ADdeo%20dos%20aprovados%20do%20CaLL%20e%20quero%20garantir%20minha%20prepara%C3%A7%C3%A3o%20para%202027!" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="text-decoration: none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.26-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.47-8.42zm-8.48 18.4h-.01a9.91 9.91 0 0 1-5.05-1.39l-.36-.21-3.75.98 1-3.65-.23-.38a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.45-9.91 9.92-9.91 2.65 0 5.14 1.03 7.01 2.91 1.88 1.87 2.91 4.36 2.91 7.01 0 5.46-4.45 9.93-9.92 9.93z"/></svg>
+                <span>Inscrever-se para 2027</span>
+              </a>
+              <a href="#aprovados-carousel-wrap" class="btn-cta-secondary" style="text-decoration: none;">
+                <span>Ver fotos dos aprovados ↓</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
       </div>
 
       <!-- Interactive Hint / Stats -->
@@ -378,207 +474,113 @@
     <div class="container">
       
       <div class="section-header text-center">
-        <h2 class="section-title">Videoaulas estratégicas para a Reta Final</h2>
+        <h2 class="section-title">Videoaula estratégica: Construção de Autoria na Redação do Enem</h2>
         <p class="section-subtitle">
-          Conteúdo direto ao ponto gravado pelos professores do CaLL para destravar sua pontuação e evitar os erros mais comuns na semana da prova.
+          Descubra o que a banca do Inep realmente busca na marca de autoria com o Prof. Rosemberg Ramalho e aprenda como estruturar argumentos próprios e autênticos para alcançar a nota máxima nas Competências 2 e 3.
         </p>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="video-filter-tabs">
-        <button class="video-tab-btn active" data-filter="all">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          Todas as aulas
-        </button>
-        <button class="video-tab-btn" data-filter="redacao">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
-          Redação 900+
-        </button>
-        <button class="video-tab-btn" data-filter="linguagens">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          Linguagens &amp; TRI
-        </button>
-        <button class="video-tab-btn" data-filter="estrategia">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Estratégia de prova
-        </button>
-      </div>
-
-      <!-- Video Grid -->
-      <div class="video-grid">
+      <!-- Autoria Video Spotlight -->
+      <div class="autoria-spotlight-layout">
         
-        <!-- Video 1 -->
-        <div class="video-card" data-category="redacao" data-video-id="L_LUpnjgPso">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/poster-argumentar.png" alt="Aula de Redação - Eixos Temáticos" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-redacao">Redação</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              34 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <!-- Video Player Frame -->
+        <div class="spotlight-player-wrapper">
+          <div class="spotlight-ambient-glow" style="background: radial-gradient(circle, rgba(255, 0, 127, 0.35) 0%, rgba(255, 229, 0, 0.25) 50%, transparent 75%);"></div>
+          <div class="spotlight-device-frame" style="border-color: rgba(255, 0, 127, 0.7); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 32px rgba(255, 0, 127, 0.3);">
+            
+            <div class="spotlight-top-bar">
+              <span class="spotlight-live-tag" style="background: rgba(255, 0, 127, 0.25); border-color: rgba(255, 0, 127, 0.5); color: #FF66AA;">
+                <span class="live-dot"></span> Prof. Rosemberg Ramalho
+              </span>
+              <button type="button" class="spotlight-sound-btn" id="autoria-sound-toggle" aria-label="Ativar som da aula">
+                <svg class="icon-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                <svg class="icon-unmuted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <span class="sound-btn-text">Ativar som</span>
+              </button>
             </div>
-          </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Prof. Rosemberg Ramalho</span>
-            </div>
-            <h3 class="video-card-title">Os 5 eixos temáticos com maior probabilidade no ENEM 2026</h3>
-            <p class="video-card-desc">
-              Como construir teses incontestáveis e articular repertórios sociológicos legítimos sem cair em clichês que descontam pontos nas Competências 2 e 3.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
+
+            <video 
+              id="autoria-video-player"
+              class="spotlight-video-element"
+              src="/assets/autoria.mp4"
+              poster="/assets/prof-rosemberg-autoria.jpg"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <!-- Play/Pause Overlay Indicator -->
+            <button type="button" class="spotlight-play-overlay" id="autoria-play-overlay" aria-label="Pausar ou reproduzir aula">
+              <div class="spotlight-play-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
             </button>
+
+            <!-- Bottom Video Progress Bar -->
+            <div class="spotlight-progress-track">
+              <div class="spotlight-progress-bar" id="autoria-progress-bar"></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Video 2 -->
-        <div class="video-card" data-category="linguagens" data-video-id="ysz5S6PUM-U">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/prof-marco-portrait.jpg" alt="Aula de Linguagens - Desvendando Distratores" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-linguagens">Linguagens</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              28 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
+        <!-- Accompanying Highlights & CTA -->
+        <div class="spotlight-content-side">
+          <div class="autoria-speaker-badge">
+            <span class="autoria-speaker-dot"></span>
+            <span>Prof. Rosemberg Ramalho • 25+ Anos de CaLL</span>
           </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Prof. Marco Aurélio</span>
-            </div>
-            <h3 class="video-card-title">Como identificar e eliminar os distratores da prova</h3>
-            <p class="video-card-desc">
-              Técnica de leitura do comando e análise de palavras-chave para nunca mais ficar em dúvida entre duas alternativas na prova de Linguagens.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
-            </button>
-          </div>
-        </div>
 
-        <!-- Video 3 -->
-        <div class="video-card" data-category="redacao" data-video-id="jNQXAC9IVRw">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/poster-sublinhar.png" alt="Aula de Redação - Competência 5" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-redacao">Redação</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              26 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-          </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Prof. Rosemberg Ramalho</span>
-            </div>
-            <h3 class="video-card-title">Garantindo 200 pontos na proposta de intervenção (Comp. 5)</h3>
-            <p class="video-card-desc">
-              O checklist infalível dos 5 elementos obrigatórios: Agente, Ação, Meio/Modo, Efeito e o tão temido Detalhamento que muitos alunos erram.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
-            </button>
-          </div>
-        </div>
+          <h3 class="spotlight-side-title">
+            O segredo da marca de autoria para alcançar a nota máxima
+          </h3>
 
-        <!-- Video 4 -->
-        <div class="video-card" data-category="estrategia" data-video-id="9bZkp7q19f0">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/call-aluno-despercebido.jpg" alt="Aula de Estratégia - Gestão de Tempo" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-estrategia">Estratégia TRI</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              22 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-          </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Equipe Pedagógica CaLL</span>
-            </div>
-            <h3 class="video-card-title">Gestão dos 330 minutos: como dividir o primeiro dia</h3>
-            <p class="video-card-desc">
-              Roteiro cronometrado para fazer o rascunho, resolver as 45 questões de Linguagens e as 45 de Ciências Humanas, passando a redação a limpo com segurança e precisão.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
-            </button>
-          </div>
-        </div>
+          <p class="spotlight-side-desc">
+            A maioria dos candidatos decora modelos prontos de redação e acaba penalizada nas Competências 2 e 3 por falta de autoria. Nesta orientação cirúrgica, você aprende como imprimir sua voz crítica no texto:
+          </p>
 
-        <!-- Video 5 -->
-        <div class="video-card" data-category="redacao" data-video-src="/assets/autoria.mp4" data-video-drive="https://drive.google.com/file/d/1oc1thWiy-rErKAJh07UlIJ0j-La3bQC_/view?usp=sharing" data-video-vertical="true">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/prof-rosemberg-autoria.jpg" alt="Aula de Redação - Autoria na Redação com Prof. Rosemberg Ramalho" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-redacao">Redação</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              1 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
-          </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Prof. Rosemberg Ramalho</span>
-            </div>
-            <h3 class="video-card-title">Construção de autoria na redação do Enem</h3>
-            <p class="video-card-desc">
-              Descubra o que a banca do Inep realmente busca na marca de autoria e aprenda como estruturar argumentos próprios e autênticos para alcançar os 200 pontos nas Competências 2 e 3.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
-            </button>
-          </div>
-        </div>
+          <ul class="spotlight-checklist">
+            <li>
+              <div class="check-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <strong>Como fugir das &apos;fórmulas prontas&apos; sem perder a estrutura</strong>
+                <span>Entenda como demonstrar ao corretor que o raciocínio é genuinamente seu, e não um modelo engessado copiado da internet.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <strong>Uso produtivo de repertórios socioculturais</strong>
+                <span>Como amarrar filósofos, sociólogos, dados e fatos históricos diretamente ao argumento central em vez de citar por mera formalidade.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check-icon-wrap">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <strong>Articulação entre parágrafos (Competência 3)</strong>
+                <span>Garantia de projeto de texto estratégico com progressão temática fluida e sem rupturas lógicas.</span>
+              </div>
+            </li>
+          </ul>
 
-        <!-- Video 6 -->
-        <div class="video-card" data-category="linguagens" data-video-id="fJ9rUzIMcZQ">
-          <div class="video-thumbnail-wrap">
-            <img src="/assets/poster-1a-2a-series.png" alt="Aula de Linguagens - Gêneros e Funções" class="video-thumbnail-img" loading="lazy" width="480" height="270" />
-            <span class="video-tag-badge badge-linguagens">Linguagens</span>
-            <span class="video-duration-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              29 min
-            </span>
-            <div class="video-play-btn-overlay">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            </div>
+          <div class="spotlight-action-row">
+            <a href="https://wa.me/558432060299?text=Ol%C3%A1!%20Vi%20a%20aula%20de%20Autoria%20do%20Prof.%20Rosemberg%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20CaLL!" target="_blank" rel="noopener noreferrer" class="btn-cta-primary" style="text-decoration: none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.04 0C5.46 0 .1 5.36.1 11.94c0 2.1.55 4.15 1.6 5.96L0 24l6.26-1.64a11.9 11.9 0 0 0 5.78 1.48h.01c6.58 0 11.94-5.36 11.94-11.94 0-3.19-1.24-6.19-3.47-8.42zm-8.48 18.4h-.01a9.91 9.91 0 0 1-5.05-1.39l-.36-.21-3.75.98 1-3.65-.23-.38a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.45-9.91 9.92-9.91 2.65 0 5.14 1.03 7.01 2.91 1.88 1.87 2.91 4.36 2.91 7.01 0 5.46-4.45 9.93-9.92 9.93z"/></svg>
+              <span>Conversar com a equipe no WhatsApp</span>
+            </a>
+            <a href="#materiais" class="btn-cta-secondary" style="text-decoration: none;">
+              <span>Baixar cartilha em PDF</span>
+            </a>
           </div>
-          <div class="video-card-body">
-            <div class="video-instructor-line">
-              <span class="video-instructor-dot"></span>
-              <span>Prof. Marco Aurélio</span>
-            </div>
-            <h3 class="video-card-title">Gêneros textuais e funções da linguagem mais recorrentes</h3>
-            <p class="video-card-desc">
-              Resolução de questões reais do ENEM envolvendo propagandas, tirinhas e textos literários com aplicação imediata da Matriz de Referência.
-            </p>
-            <button class="btn-watch-video">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span>Assistir à aula agora</span>
-            </button>
-          </div>
+
         </div>
 
       </div>
@@ -591,9 +593,6 @@
     <div class="container">
       
       <div class="section-header text-center">
-        <span class="badge-pulsing" style="margin-bottom: 14px; display: inline-flex;">
-          <span class="pulse-dot"></span> VÍDEO EXCLUSIVO EM DESTAQUE
-        </span>
         <h2 class="section-title">O que é fundamental para se dar bem na redação do Enem</h2>
         <p class="section-subtitle">
           Direcionamento estratégico direto da equipe do CaLL para você entrar no primeiro dia de prova com tranquilidade, método e foco nos 900+.
@@ -647,11 +646,6 @@
 
         <!-- Accompanying Highlights & CTA -->
         <div class="spotlight-content-side">
-          <div class="spotlight-tag-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <span>Orientações Essenciais da Banca</span>
-          </div>
-
           <h3 class="spotlight-side-title">
             Dicas práticas para você não errar no dia da prova
           </h3>
@@ -1204,11 +1198,6 @@
     <div class="container">
       
       <div class="final-cta-box">
-        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 229, 0, 0.18); border: 1px solid rgba(255, 229, 0, 0.4); color: var(--call-yellow); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 16px; border-radius: 999px; margin-bottom: 20px;">
-          <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--call-yellow); display: inline-block;"></span>
-          Matrículas abertas • Turmas 2027
-        </div>
-
         <h2 class="final-cta-title">
           Inscreva-se no CaLL para 2027
         </h2>

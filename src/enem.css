@@ -822,13 +822,38 @@ input, textarea {
   pointer-events: none;
 }
 
-.spotlight-video-layout {
+.spotlight-video-layout,
+.aprovados-video-layout,
+.autoria-spotlight-layout {
   display: grid;
   grid-template-columns: 340px 1fr;
   gap: 52px;
   align-items: center;
   max-width: 1040px;
   margin: 0 auto;
+}
+
+.aprovados-video-spotlight {
+  margin-top: 24px;
+  margin-bottom: 56px;
+}
+
+.autoria-speaker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--call-yellow);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.autoria-speaker-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--call-yellow);
+  box-shadow: 0 0 8px var(--call-yellow);
 }
 
 .spotlight-player-wrapper {
@@ -1071,7 +1096,9 @@ input, textarea {
 }
 
 @media (max-width: 900px) {
-  .spotlight-video-layout {
+  .spotlight-video-layout,
+  .aprovados-video-layout,
+  .autoria-spotlight-layout {
     grid-template-columns: 1fr;
     gap: 36px;
   }
