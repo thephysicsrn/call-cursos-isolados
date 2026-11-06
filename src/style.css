@@ -259,11 +259,11 @@ button, input, select, textarea {
   align-items: center;
   justify-content: space-between;
   height: 76px;
-  gap: clamp(10px, 1.4vw, 24px);
+  gap: clamp(8px, 1.2vw, 20px);
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 clamp(16px, 2vw, 32px);
+  padding: 0 clamp(12px, 1.8vw, 32px);
   box-sizing: border-box;
 }
 
@@ -325,12 +325,13 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   flex-shrink: 1;
+  min-width: 0;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(8px, 1.1vw, 18px);
+  gap: clamp(6px, 0.9vw, 16px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -339,13 +340,13 @@ button, input, select, textarea {
 
 .nav-link {
   font-weight: 700;
-  font-size: 0.84rem;
+  font-size: clamp(0.76rem, 0.8vw, 0.84rem);
   color: var(--call-text-secondary);
   position: relative;
-  padding: 6px 2px;
+  padding: 6px 4px;
   white-space: nowrap;
   text-decoration: none;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15px;
   transition: color var(--transition-fast);
 }
 
@@ -417,8 +418,8 @@ button, input, select, textarea {
   color: var(--call-navy-deep);
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 0.82rem;
-  padding: 8px clamp(14px, 1.4vw, 20px);
+  font-size: clamp(0.76rem, 0.8vw, 0.82rem);
+  padding: 8px clamp(12px, 1.1vw, 18px);
   border-radius: var(--radius-full);
   box-shadow: 0 4px 18px rgba(255, 229, 0, 0.35);
   white-space: nowrap;
@@ -2776,38 +2777,33 @@ select.form-input option {
   }
 }
 
-@media (max-width: 1360px) {
-  .phone-full {
+@media (max-width: 1400px) {
+  .phone-full,
+  .btn-whatsapp-header .btn-label {
     display: none;
   }
   .phone-short {
     display: inline;
   }
+  .btn-whatsapp-header {
+    padding: 8px 10px;
+  }
   .nav-list {
-    gap: 12px;
+    gap: clamp(6px, 0.8vw, 12px);
+  }
+}
+
+@media (max-width: 1240px) {
+  .top-bar-text {
+    display: none;
   }
   .nav-link {
-    font-size: 0.80rem;
+    font-size: 0.77rem;
+    padding: 6px 3px;
   }
 }
 
 @media (max-width: 1140px) {
-  .btn-whatsapp-header .btn-label {
-    display: none;
-  }
-  .btn-whatsapp-header {
-    padding: 7px 10px;
-  }
-  .nav-list {
-    gap: 10px;
-  }
-}
-
-@media (max-width: 1040px) {
-  .top-bar-text {
-    display: none;
-  }
-
   .nav-menu {
     position: fixed;
     top: 76px;
