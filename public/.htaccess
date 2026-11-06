@@ -1,7 +1,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Forçar HTTPS
+  # Redirecionar callnatal.com.br para www.callnatal.com.br
+  RewriteCond %{HTTP_HOST} ^callnatal\.com\.br [NC]
+  RewriteRule ^(.*)$ https://www.callnatal.com.br/$1 [L,R=301]
+
+  # Forcar HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
