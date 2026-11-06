@@ -7,3 +7,9 @@ dist/
 impeccable/
 
 site-callnatal-pronto.zip
+
+# Raw media source files
+seu sonho,nossa meta/
+*.MOV
+*.mov
+

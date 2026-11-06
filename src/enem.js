@@ -755,17 +755,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // 10. Bento Grid Progressive Disclosure on Mobile
-  const bentoExpandBtn = document.getElementById('bento-expand-btn');
-  const bentoGrid = document.querySelector('.bento-social-masonry');
-  if (bentoExpandBtn && bentoGrid) {
-    bentoExpandBtn.addEventListener('click', () => {
-      const isExpanded = bentoGrid.classList.toggle('is-expanded');
-      bentoExpandBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-      bentoExpandBtn.innerHTML = isExpanded
-        ? '<span>Mostrar menos histórias</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>'
-        : '<span>Ver todas as histórias de aprovação</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>';
+  // 10. Pausa automática de outros vídeos quando um der play
+  const allMediaVideos = document.querySelectorAll('.sonho-video-element, .spotlight-video-element');
+  allMediaVideos.forEach(vid => {
+    vid.addEventListener('play', () => {
+      allMediaVideos.forEach(other => {
+        if (other !== vid && !other.paused) {
+          other.pause();
+        }
+      });
     });
-  }
+  });
 });
 
